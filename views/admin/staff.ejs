@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+    <title>Manage Staff</title>
+</head>
+<body>
+    <%- include('../partials/header'); %>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/scripts.js"></script>
+    <div class="container">
+        <h1>Staff Management</h1>
+        <form method="POST" action="/admin/staff/add">
+            <label for="staff-name">Staff Name:</label>
+            <input type="text" id="staff-name" name="name" required>
+            
+            <label for="staff-phone">Phone:</label>
+            <input type="text" id="staff-phone" name="phone" required>
+            
+            <label for="staff-email">Email:</label>
+            <input type="email" id="staff-email" name="email" required>
+            
+            <label for="staff-role">Role:</label>
+            <select id="staff-role" name="role" required>
+                <option value="Doctor">Doctor</option>
+                <option value="Therapist">Therapist</option>
+                <option value="Receptionist">Receptionist</option>
+            </select>
+            
+            <button type="submit">Add Staff</button>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% staff.forEach(member => { %>
+                    <tr>
+                        <td><%= member.name %></td>
+                        <td><%= member.phone %></td>
+                        <td><%= member.email %></td>
+                        <td><%= member.role %></td>
+                        <td>
+                            <a href="/admin/staff/edit/<%= member._id %>">Edit</a>
+                            <a href="/admin/staff/delete/<%= member._id %>" onclick="return confirm('Are you sure?')">Delete</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+    <%- include('../partials/footer'); %>
+</body>
+</html>

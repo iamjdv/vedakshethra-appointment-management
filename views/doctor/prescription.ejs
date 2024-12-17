@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+    <title>Prescription</title>
+</head>
+<body>
+    <%- include('../partials/header'); %>
+    <div class="container">
+        <h1>Write a Prescription</h1>
+        <form method="POST" action="/doctor/prescription">
+            <label for="patient-name">Patient Name:</label>
+            <input type="text" id="patient-name" name="patientName" required>
+            
+            <label for="patient-phone">Phone:</label>
+            <input type="text" id="patient-phone" name="patientPhone" required>
+            
+            <label for="patient-place">Place:</label>
+            <input type="text" id="patient-place" name="patientPlace" required>
+            
+            <label for="patient-age">Age:</label>
+            <input type="number" id="patient-age" name="patientAge" required>
+            
+            <label for="patient-gender">Gender:</label>
+            <select id="patient-gender" name="patientGender" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+            
+            <label for="condition">Condition:</label>
+            <textarea id="condition" name="condition" required></textarea>
+            
+            <label for="next-followup">Next Follow-Up Date:</label>
+            <input type="date" id="next-followup" name="nextFollowup" required>
+            
+            <label for="staff">Doctor:</label>
+            <select id="staff" name="staff" required>
+                <option value="Dr. Adarsh">Dr. Adarsh</option>
+                <option value="Dr. Neelima">Dr. Neelima</option>
+                <!-- Add other staff options here -->
+            </select>
+            
+            <button type="submit">Save Prescription</button>
+        </form>
+
+        <h3>Prescription Details</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Phone</th>
+                    <th>Place</th>
+                    <th>Age</th>
+                    <th>Condition</th>
+                    <th>Next Follow-Up</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%- prescriptions.forEach(prescription => { %>
+                    <tr>
+                        <td><%= prescription.patientName %></td>
+                        <td><%= prescription.patientPhone %></td>
+                        <td><%= prescription.patientPlace %></td>
+                        <td><%= prescription.patientAge %></td>
+                        <td><%= prescription.condition %></td>
+                        <td><%= prescription.nextFollowup %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+    <%- include('../partials/footer'); %>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/scripts.js"></script>
+</body>
+</html>

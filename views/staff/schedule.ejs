@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+    <title>Staff Schedule</title>
+</head>
+<body>
+    <%- include('../partials/header'); %>
+    <div class="container">
+        <h1>Staff Schedule</h1>
+        
+        <!-- Schedule Form: Filter by Date -->
+        <form method="GET" action="/staff/schedule">
+            <label for="date">Select Date:</label>
+            <input type="date" id="date" name="date" required>
+            <button type="submit">View Schedule</button>
+        </form>
+
+        <!-- Displaying Schedule -->
+        <h2>Schedule for <%= selectedDate %></h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Patient Name</th>
+                    <th>Staff</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%- schedule.forEach(slot => { %>
+                    <tr>
+                        <td><%= slot.time %></td>
+                        <td><%= slot.patientName %></td>
+                        <td><%= slot.staff %></td>
+                        <td><%= slot.details %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+    <%- include('../partials/footer'); %>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/scripts.js"></script>
+</body>
+</html>

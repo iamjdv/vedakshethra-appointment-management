@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/scripts.js"></script>
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <%- include('../partials/header'); %>
+    <div class="container">
+        <h1>Welcome, Admin</h1>
+        <div class="stats">
+            <p>Total Appointments: <%= appointmentCount %></p>
+            <p>Total Staff Members: <%= staffCount %></p>
+            <p>Total Patients: <%= patientCount %></p>
+        </div>
+        <div class="links">
+            <a href="/admin/appointments">Manage Appointments</a>
+            <a href="/admin/schedules">View Schedules</a>
+            <a href="/admin/staff">Manage Staff</a>
+        </div>
+    </div>
+    <%- include('../partials/footer'); %>
+</body>
+</html>

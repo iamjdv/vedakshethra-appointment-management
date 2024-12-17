@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+    <title>Daily Schedules</title>
+</head>
+<body>
+    <%- include('../partials/header'); %>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/scripts.js"></script>
+    <div class="container">
+        <h1>Daily Schedules</h1>
+        <form method="GET" action="/admin/schedules">
+            <label for="schedule-date">Select Date:</label>
+            <input type="date" id="schedule-date" name="date" value="<%= selectedDate %>">
+            <button type="submit">View Schedule</button>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Patient Name</th>
+                    <th>Phone</th>
+                    <th>Staff</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% schedules.forEach(schedule => { %>
+                    <tr>
+                        <td><%= schedule.time %></td>
+                        <td><%= schedule.patientName %></td>
+                        <td><%= schedule.phone %></td>
+                        <td><%= schedule.staff %></td>
+                        <td><%= schedule.details %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+    <%- include('../partials/footer'); %>
+</body>
+</html>

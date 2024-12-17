@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+    <title>Doctor Dashboard</title>
+</head>
+<body>
+    <%- include('../partials/header'); %>
+    <div class="container">
+        <h1>Welcome, Dr. <%= doctorName %></h1>
+        <div class="links">
+            <a href="/doctor/prescription">Create Prescription</a>
+            <a href="/doctor/history">View Patient History</a>
+            <a href="/doctor/schedules">View Schedules</a>
+        </div>
+    </div>
+    <%- include('../partials/footer'); %>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/scripts.js"></script>
+</body>
+</html>

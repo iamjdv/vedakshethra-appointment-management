@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+    <title>Patient History</title>
+</head>
+<body>
+    <%- include('../partials/header'); %>
+    <div class="container">
+        <h1>Patient History</h1>
+        <form method="GET" action="/doctor/history">
+            <label for="patient-id">Search by Patient ID or Name:</label>
+            <input type="text" id="patient-id" name="patientId" placeholder="Enter Patient ID or Name" required>
+            <button type="submit">Search</button>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Condition</th>
+                    <th>Next Follow-Up Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%- history.forEach(record => { %>
+                    <tr>
+                        <td><%= record.patientName %></td>
+                        <td><%= record.patientPhone %></td>
+                        <td><%= record.patientEmail %></td>
+                        <td><%= record.condition %></td>
+                        <td><%= record.nextFollowup %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+    <%- include('../partials/footer'); %>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/scripts.js"></script>
+</body>
+</html>

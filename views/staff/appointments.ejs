@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+    <title>Staff Appointments</title>
+</head>
+<body>
+    <%- include('../partials/header'); %>
+    <div class="container">
+        <h1>Staff Appointments</h1>
+
+        <!-- Appointment Form: Search by Date -->
+        <form method="GET" action="/staff/appointments">
+            <label for="appointment-date">Select Date:</label>
+            <input type="date" id="appointment-date" name="appointmentDate" required>
+            <button type="submit">View Appointments</button>
+        </form>
+
+        <!-- Displaying Appointments -->
+        <h2>Appointments for <%= selectedDate %></h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Time</th>
+                    <th>Staff</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%- appointments.forEach(appointment => { %>
+                    <tr>
+                        <td><%= appointment.patientName %></td>
+                        <td><%= appointment.patientPhone %></td>
+                        <td><%= appointment.patientEmail %></td>
+                        <td><%= appointment.time %></td>
+                        <td><%= appointment.staff %></td>
+                        <td><%= appointment.details %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+    <%- include('../partials/footer'); %>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/scripts.js"></script>
+</body>
+</html>
